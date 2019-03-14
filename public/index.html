@@ -2,33 +2,67 @@
 <html>
     <head>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        
+        <!-- My CSS -->
         <link rel="stylesheet" href="css/style.css"/>
+
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase-app.js"></script>
+
+        <!-- Add additional services that you want to use -->
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-auth.js"></script> 
+        <!--<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-messaging.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-functions.js"></script> -->
+
+        <script src="js/firebase-Initialization.js"></script>
+        
         <title>Wallpaper App Admin </title>
     </head>
 
     <body class="bg-dark">
-        <!-- JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
+        
         <div id="login-card" class="card">
             <div class="card-body">
                 <h1>Wallpaper App Admin</h1>
 
                 <form id="login-form">
                     <div class="form-group">
-                        <label for="lemail">Enter email Id</label>
-                        <input type="email" id="lemail" class="form-control"/>
+                        <label for="l-email">Enter email Id</label>
+                        <input type="email" id="l-email" class="form-control"/>
                     </div>
                     <div class="form-group">
-                            <label for="lpassword">Enter password</label>
-                            <input type="password" id="lpassword" class="form-control"/>
+                            <label for="l-password">Enter password</label>
+                            <input type="password" id="l-password" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">Login</button>
+                        <button id="btn-login" type="button" class="btn btn-primary">Login</button>
                     </div>
                 </form>
             </div>
         </div>
+
+        <!-- JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+       
+        <!-- Link to js -->
+        <script type="text/javascript" src="js/index.js"></script>
+
+        <!-- Script for checking user session -->
+        <script type="text/javascript">
+            
+            firebase.auth().onAuthStateChanged(function(user){
+                if (user) {
+                    //user is logged in
+                    window.location.href = "admin.html";
+                }
+            });
+        </script>
     </body>
 </html>
