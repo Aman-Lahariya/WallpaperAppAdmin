@@ -24,12 +24,6 @@
 				</div>
 
 				<div class="form-group">
-					<label for="desc">Descriptin</label>
-					<input type="text" id="desc" class="form-control">
-					<div class="invalid-feedback">Please enter description</div>
-				</div>
-
-				<div class="form-group">
 					<label for="wallpaper">Wallpaper</label>
 					<input type="file" id="wallpaper" class="form-control" style="height: auto;">
 					<div class="invalid-feedback">Please choose a valid thumbnail</div>
@@ -84,21 +78,14 @@
         $('#btn-save').click(function () {
 
             $('#title').removeClass("is-invalid");
-            $('#desc').removeClass("is-invalid");
             $('#wallpaper').removeClass("is-invalid");
 
             var title = $("#title").val();
-            var desc = $('#desc').val();
             var wallpaper = $('#wallpaper').prop("files")[0];
             var error = 0;
 
             if (!title) {
                 $('#title').addClass("is-invalid");
-                error = 1;
-            }
-
-            if (!desc) {
-                $('#desc').addClass("is-invalid");
                 error = 1;
             }
 
@@ -142,8 +129,7 @@
             		 var imageid = database.push().key;
             		 var image = {
             		 	"url" : imageUrl,
-            		 	"title" : title,
-            		 	"desc" : desc
+            		 	"title" : title
             		 };
 
             		 database.child(imageid).set(image,function(err){
